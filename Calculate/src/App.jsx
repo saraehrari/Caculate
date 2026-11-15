@@ -17,18 +17,20 @@ function App(){
     setDsplay(result);
   }
    const Subtraction= () =>{
-    const result = Number(num1) + Number(num2)
+    const result = Number(num1) - Number(num2)
     setDsplay(result);
   }
    const Multiplication= () =>{
-    const result = Number(num1) + Number(num2)
+    const result = Number(num1) * Number(num2)
     setDsplay(result);
   }
    const Division= () =>{
-    const result = Number(num1) + Number(num2)
+    const result = Number(num1) / Number(num2)
     setDsplay(result);
   }
-  
+  if (Number(num2)===0){
+    setError("Division by Zero is not Allowed")
+  }
     
   
    

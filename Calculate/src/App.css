@@ -1,0 +1,136 @@
+
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+/* General Styling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #f3efff, #e8eaff, #fdf2f8);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Calculator Card */
+.calculator {
+  width: 100%;
+  max-width: 400px;
+  padding: 35px 30px;
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 15px 45px rgba(120, 100, 180, 0.15);
+  text-align: center;
+  border: 1px solid #eee8ff;
+}
+
+/* Heading */
+.calculator h1 {
+  font-size: 27px;
+  font-weight: 700;
+  color: #493b76;
+  margin-bottom: 30px;
+}
+
+/* Form */
+.calculator form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Input Fields */
+.calculator input {
+  width: 100%;
+  padding: 15px 16px;
+  border: 2px solid #eee9fa;
+  border-radius: 12px;
+  outline: none;
+  font-family: inherit;
+  font-size: 15px;
+  color: #493b76;
+  background: #faf9ff;
+  transition: 0.3s ease;
+}
+
+.calculator input:focus {
+  border-color: #a78bfa;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(167, 139, 250, 0.12);
+}
+
+.calculator input::placeholder {
+  color: #aaa2bf;
+}
+
+/* Buttons Container */
+.calculator form div {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-top: 5px;
+}
+
+/* Buttons */
+.calculator button {
+  padding: 14px 8px;
+  border: none;
+  border-radius: 12px;
+  background: #eee8ff;
+  color: #7355bd;
+  font-size: 22px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.calculator button:hover {
+  background: #8b6cdb;
+  color: #ffffff;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(139, 108, 219, 0.25);
+}
+
+.calculator button:active {
+  transform: scale(0.95);
+}
+
+/* Result */
+.calculator h2 {
+  background: #f5f1ff;
+  padding: 17px;
+  border-radius: 12px;
+  color: #6246a3;
+  font-size: 20px;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+/* Error Message */
+.calculator form p {
+  color: #e05270;
+  background: #fff0f3;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .calculator {
+    max-width: 90%;
+    padding: 28px 20px;
+  }
+
+  .calculator h1 {
+    font-size: 23px;
+  }
+}

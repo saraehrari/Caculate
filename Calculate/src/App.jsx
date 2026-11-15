@@ -25,12 +25,15 @@ function App(){
     setDsplay(result);
   }
    const Division= () =>{
+     if (Number(num2)===0){
+    setError("Division by Zero is not Allowed")
+     return;
+  }
     const result = Number(num1) / Number(num2)
     setDsplay(result);
+   
   }
-  if (Number(num2)===0){
-    setError("Division by Zero is not Allowed")
-  }
+ 
 
   
    

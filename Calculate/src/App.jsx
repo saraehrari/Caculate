@@ -31,7 +31,7 @@ function App(){
   if (Number(num2)===0){
     setError("Division by Zero is not Allowed")
   }
-    
+
   
    
 }

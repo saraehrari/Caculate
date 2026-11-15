@@ -34,10 +34,44 @@ function App(){
     setDsplay(result);
    
   }
- 
 
-  
-   
+  return(
+  <div className="calculator">
+    <h1>React Calculator</h1>
+
+    <form>
+      {/* First Number */}
+      <input
+        type="number"
+        value={num1}
+        onChange={(e) => setNum1(e.target.value)}
+        placeholder="Enter first number"
+      />
+
+      {/* Second Number */}
+      <input
+        type="number"
+        value={num2}
+        onChange={(e) => setNum2(e.target.value)}
+        placeholder="Enter second number"
+      />
+
+      {/* Calculation Buttons */}
+      <div>
+        <button type="button" onClick={Addition}>+</button>
+        <button type="button" onClick={Subtraction}>-</button>
+        <button type="button" onClick={Multiplication}>×</button>
+        <button type="button" onClick={Division}>÷</button>
+      </div>
+
+      {/* Result */}
+      <h2>Result: {dsplay}</h2>
+
+      {/* Error Message */}
+      {error && <p>{error}</p>}
+    </form>
+  </div>
+  )
 }
 
 export default App;

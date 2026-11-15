@@ -1,9 +1,5 @@
 import { useState } from "react";
 
-
-
-
-
 function App(){
 
   const [num1, setNum1]= useState(0);

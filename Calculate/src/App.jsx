@@ -29,6 +29,7 @@ function App(){
     setError("Division by Zero is not Allowed")
      return;
   }
+    setError("")
     const result = Number(num1) / Number(num2)
     setDsplay(result);
    

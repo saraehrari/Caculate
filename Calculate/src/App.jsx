@@ -3,8 +3,8 @@ import "./App.css";
 
 function App(){
 
-  const [num1, setNum1]= useState(0);
-  const [num2, setNum2]= useState(0);
+  const [num1, setNum1]= useState(null);
+  const [num2, setNum2]= useState(null);
    const [error, setError]= useState();
   const [dsplay, setDsplay]= useState(null);
 
@@ -30,6 +30,11 @@ function App(){
     const result = Number(num1) / Number(num2)
     setDsplay(result);
    
+  }
+
+  function Handledelete(){
+    setNum1("");
+    setNum2("")
   }
 
   return(
@@ -66,6 +71,8 @@ function App(){
 
       {/* Error Message */}
       {error && <p>{error}</p>}
+
+      <button onSubmit={Handledelete}>Resut</button>
     </form>
   </div>
   )

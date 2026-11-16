@@ -80,12 +80,13 @@ function App(){
   {[7, 8, 9, 4, 5, 6, 1, 2, 3, 0].map((number) => (
     <button
     key={number}
+    value={operation}
     type="button"
     onClick={()=>{
-    if(num1=== null || num1===""){
-      setNum1(String(number))
+    if(operation===""){
+      setNum1((prev)=> prev+String(number))
     }else{
-      setNum2(String(number))
+      setNum2((prev) =>prev+String(number))
     }
 
     }}

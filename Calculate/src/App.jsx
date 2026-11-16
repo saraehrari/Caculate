@@ -68,6 +68,7 @@ function App(){
         value={num1}
         onChange={(e) => setNum1(e.target.value)}
         placeholder="Enter first number"
+        onFocus={() => setActiveInput("num1")}
       />
 
       {/* Second Number */}
@@ -76,6 +77,7 @@ function App(){
         value={num2}
         onChange={(e) => setNum2(e.target.value)}
         placeholder="Enter second number"
+        onFocus={() => setActiveInput("num2")}
       />
 
       {/* Calculation Buttons */}

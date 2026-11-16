@@ -105,7 +105,7 @@ function App(){
     key={number}
     type="button"
     onClick={()=>{
-    if(operation===""){
+    if(activeInput==="num1"){
       setNum1((prev)=> prev+String(number))
     }else{
       setNum2((prev) =>prev+String(number))

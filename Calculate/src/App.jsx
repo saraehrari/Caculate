@@ -87,7 +87,7 @@ function App(){
         <button type="button" onClick={()=> setOperation("×")}>×</button>
         <button type="button" onClick={()=> setOperation("÷")}>÷</button>
         
-  <button type="button" onClick={Calculation}>=</button>
+       <button type="button" onClick={Calculation}>=</button>
       </div>
 
       {/* Result */}

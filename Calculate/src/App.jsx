@@ -3,9 +3,9 @@ import "./App.css";
 
 function App(){
 
-  const [num1, setNum1]= useState(null);
-  const [num2, setNum2]= useState(null);
-   const [error, setError]= useState();
+  const [num1, setNum1]= useState("");
+  const [num2, setNum2]= useState("");
+  const [error, setError]= useState();
   const [dsplay, setDsplay]= useState(null);
   const [operation, setOperation] = useState("");
 
@@ -33,6 +33,24 @@ function App(){
    
   }
 
+  function Cuculation(){
+ if(operation==='+'){
+   Addition();
+ }
+ 
+ else if (operation === "-") {
+ Subtraction();
+}
+
+ if(operation=== "×"){
+  Multiplication();
+ }
+
+ else if(operation ==="÷"){
+  Division();
+ }
+
+  }
   function Handledelete(){
     setNum1("");
     setNum2("")
@@ -61,10 +79,10 @@ function App(){
 
       {/* Calculation Buttons */}
       <div>
-        <button type="button" onClick={Addition}>+</button>
-        <button type="button" onClick={Subtraction}>-</button>
-        <button type="button" onClick={Multiplication}>×</button>
-        <button type="button" onClick={Division}>÷</button>
+        <button type="button" onClick={() => setOperation("+")}>+</button>
+        <button type="button" onClick={() => setOperation("-")}>-</button>
+        <button type="button" onClick={()=> setOperation("×")}>×</button>
+        <button type="button" onClick={()=> setOperation("÷")}>÷</button>
       </div>
 
       {/* Result */}
@@ -80,7 +98,6 @@ function App(){
   {[7, 8, 9, 4, 5, 6, 1, 2, 3, 0].map((number) => (
     <button
     key={number}
-    value={operation}
     type="button"
     onClick={()=>{
     if(operation===""){

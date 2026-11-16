@@ -6,8 +6,9 @@ function App(){
   const [num1, setNum1]= useState("");
   const [num2, setNum2]= useState("");
   const [error, setError]= useState();
-  const [dsplay, setDsplay]= useState(null);
+  const [dsplay, setDsplay]= useState('');
   const [operation, setOperation] = useState("");
+  const [activeInput, setActiveInput] = useState("num1");
 
 
   const Addition= () =>{
@@ -33,7 +34,7 @@ function App(){
    
   }
 
-  function Cuculation(){
+ function Calculation(){
  if(operation==='+'){
    Addition();
  }
@@ -83,6 +84,8 @@ function App(){
         <button type="button" onClick={() => setOperation("-")}>-</button>
         <button type="button" onClick={()=> setOperation("×")}>×</button>
         <button type="button" onClick={()=> setOperation("÷")}>÷</button>
+        
+  <button type="button" onClick={Calculation}>=</button>
       </div>
 
       {/* Result */}

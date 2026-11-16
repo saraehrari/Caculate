@@ -72,7 +72,7 @@ function App(){
       {/* Error Message */}
       {error && <p>{error}</p>}
 
-      <button onSubmit={Handledelete}>Resut</button>
+      <button onSubmit={Handledelete}>Reset</button>
     </form>
   </div>
   )

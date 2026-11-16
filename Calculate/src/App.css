@@ -1,6 +1,4 @@
 
-
-/* General Styling */
 * {
   margin: 0;
   padding: 0;
@@ -8,128 +6,164 @@
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
-  background: #f3f4f8;
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 20px;
+  background: linear-gradient(135deg, #e8edf3, #cbd2dc);
+  font-family: "Segoe UI", sans-serif;
 }
 
-/* Calculator Card */
+/* Calculator Body */
 .calculator {
-  width: 100%;
-  max-width: 420px;
-  background: #ffffff;
-  padding: 35px;
-  border-radius: 20px;
-  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
-  text-align: center;
+  width: 360px;
+  padding: 28px;
+  border-radius: 30px;
+  background: linear-gradient(145deg, #343a46, #1c2029);
+  border: 1px solid #505866;
+  box-shadow:
+    0 25px 50px rgba(0, 0, 0, 0.25),
+    inset 0 2px 3px rgba(255, 255, 255, 0.12);
 }
 
 /* Heading */
 .calculator h1 {
-  color: #25243a;
-  font-size: 27px;
-  font-weight: 700;
-  margin-bottom: 30px;
+  color: #f1f3f7;
+  font-size: 24px;
+  text-align: center;
+  letter-spacing: 1px;
+  margin-bottom: 25px;
 }
 
 /* Form */
 .calculator form {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 17px;
 }
 
-/* Input Fields */
+/* LCD Display Inputs */
 .calculator input {
   width: 100%;
-  padding: 14px 16px;
-  border: 1px solid #e1e3eb;
+  height: 50px;
+  padding: 14px;
+  border: 2px solid #aab69d;
   border-radius: 10px;
   outline: none;
-  font-size: 15px;
-  color: #333;
-  background: #fafaff;
-  transition: 0.3s ease;
+  background: #c8d5b9;
+  color: #243421;
+  font-size: 17px;
+  font-weight: 600;
+  box-shadow: inset 0 3px 8px rgba(0,0,0,0.18);
 }
 
-.calculator input:focus {
-  border-color: #7663e9;
-  box-shadow: 0 0 0 3px rgba(118, 99, 233, 0.12);
+.calculator input::placeholder {
+  color: #65735c;
+  font-size: 13px;
 }
 
-/* Calculation Buttons */
+/* Number Keypad */
+.number-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  padding: 5px;
+  margin: 10px;
+}
+
+.number-grid button,
+.calculator form div button {
+  height: 55px;
+  border: 1px solid #626a77;
+  border-radius: 12px;
+  background: linear-gradient(145deg, #555e6c, #343b47);
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 5px 0 #171b23;
+  transition: 0.15s ease;
+}
+
+.number-grid button:hover,
+.calculator form div button:hover {
+  background: linear-gradient(145deg, #687383, #444c59);
+}
+
+.number-grid button:active,
+.calculator form div button:active {
+  transform: translateY(4px);
+  box-shadow: 0 1px 0 #171b23;
+}
+
+/* Operation Buttons */
 .calculator form div {
   display: flex;
-  justify-content: center;
-  gap: 12px;
+  gap: 10px;
 }
 
 .calculator form div button {
-  width: 55px;
-  height: 50px;
-  border: none;
-  border-radius: 10px;
-  background: #7663e9;
+  flex: 1;
+  background: linear-gradient(145deg, #f3a14c, #dc762c);
+  border-color: #f5b36e;
   color: white;
-  font-size: 23px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.3s ease;
 }
 
 .calculator form div button:hover {
-  background: #5b48ce;
-  transform: translateY(-3px);
+  background: #ffad57;
 }
 
-/* Result */
+/* Result Screen */
 .calculator h2 {
-  background: #f3f0ff;
-  color: #624bd6;
-  padding: 16px;
+  min-height: 58px;
+  padding: 17px;
   border-radius: 10px;
+  background: #c8d5b9;
+  color: #263824;
+  text-align: right;
   font-size: 20px;
-  font-weight: 600;
+  border: 2px solid #aab69d;
+  box-shadow: inset 0 3px 8px rgba(0,0,0,0.18);
 }
 
 /* Error Message */
 .calculator p {
-  color: #e04444;
-  font-size: 14px;
-  background: #fff0f0;
-  padding: 10px;
+  padding: 11px;
   border-radius: 8px;
+  background: #512f35;
+  color: #ff9c9c;
+  font-size: 13px;
+  text-align: center;
 }
 
 /* Reset Button */
 .calculator form > button {
-  padding: 13px;
-  border: 1px solid #7663e9;
-  border-radius: 10px;
-  background: white;
-  color: #7663e9;
-  font-size: 15px;
+  height: 48px;
+  border: none;
+  border-radius: 11px;
+  background: linear-gradient(145deg, #ed6464, #c83e3e);
+  color: white;
+  font-size: 16px;
   font-weight: 600;
   cursor: pointer;
-  transition: 0.3s ease;
+  box-shadow: 0 4px 0 #8e2929;
 }
 
 .calculator form > button:hover {
-  background: #7663e9;
-  color: white;
+  background: #fa7777;
 }
 
-/* Responsive Design */
-@media (max-width: 480px) {
+.calculator form > button:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #8e2929;
+}
+
+/* Mobile Responsive */
+@media (max-width: 400px) {
   .calculator {
-    padding: 25px 20px;
-  }
-
-  .calculator h1 {
-    font-size: 23px;
+    width: 100%;
+    padding: 22px;
   }
 }
+

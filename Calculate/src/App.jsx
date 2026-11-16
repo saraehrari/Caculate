@@ -7,6 +7,7 @@ function App(){
   const [num2, setNum2]= useState(null);
    const [error, setError]= useState();
   const [dsplay, setDsplay]= useState(null);
+  const [operation, setOperation] = useState("");
 
 
   const Addition= () =>{
@@ -36,6 +37,11 @@ function App(){
     setNum1("");
     setNum2("")
   }
+
+
+
+
+
 
   return(
   <div className="calculator">
@@ -74,6 +80,25 @@ function App(){
 
       <button onSubmit={Handledelete}>Reset</button>
     </form>
+
+    <div className="number-grid">
+  {[7, 8, 9, 4, 5, 6, 1, 2, 3, 0].map((number) => (
+    <button
+    key={number}
+    type="button"
+    onClick={()=>{
+    if(num1=== null || num1===""){
+      setNum1(String(number))
+    }else{
+      setNum2(String(number))
+    }
+
+    }}
+    >
+      {number}
+    </button>
+  ))}
+</div>
   </div>
   )
 }

@@ -38,11 +38,6 @@ function App(){
     setNum2("")
   }
 
-
-
-
-
-
   return(
   <div className="calculator">
     <h1>React Calculator</h1>

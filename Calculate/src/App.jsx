@@ -57,6 +57,17 @@ function App(){
     setNum2("")
   }
 
+
+  function Handledelete(){
+    if(activeInput===num1){
+      setNum1((prev) =>prev.slice(0,-1))
+    }
+    else{
+      setNum2((prev) =>prev.slice(0,-1))
+    }
+  }
+
+
   return(
   <div className="calculator">
     <h1>React Calculator</h1>
@@ -86,6 +97,9 @@ function App(){
         <button type="button" onClick={() => setOperation("-")}>-</button>
         <button type="button" onClick={()=> setOperation("×")}>×</button>
         <button type="button" onClick={()=> setOperation("÷")}>÷</button>
+        <button type="button" onClick={Handledelete}>
+             ⌫
+      </button>
         
        <button type="button" onClick={Calculation}>=</button>
       </div>

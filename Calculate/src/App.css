@@ -1,4 +1,4 @@
-
+/* 1. Global styling */
 * {
   margin: 0;
   padding: 0;
@@ -7,165 +7,176 @@
 
 body {
   min-height: 100vh;
+  margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
-  background: linear-gradient(135deg, #e8edf3, #cbd2dc);
+  padding: 25px;
   font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(135deg, #100d1c, #211735);
+  color: #ffffff;
 }
 
-/* Calculator Body */
+#root {
+  width: 100%;
+  min-height: 100vh;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* 2. Calculator card */
 .calculator {
-  width: 360px;
-  padding: 28px;
-  border-radius: 30px;
-  background: linear-gradient(145deg, #343a46, #1c2029);
-  border: 1px solid #505866;
-  box-shadow:
-    0 25px 50px rgba(0, 0, 0, 0.25),
-    inset 0 2px 3px rgba(255, 255, 255, 0.12);
-    justify-content: center;
+  width: 100%;
+  max-width: 390px;
+  margin: auto;
 }
 
-/* Heading */
 .calculator h1 {
-  color: #f1f3f7;
-  font-size: 24px;
   text-align: center;
-  letter-spacing: 1px;
+  font-size: 26px;
   margin-bottom: 25px;
+  color: #ffffff;
 }
 
-/* Form */
+/* 3. Form layout */
 .calculator form {
-  display: grid;
+  display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 17px;
+  gap: 15px;
 }
 
-/* LCD Display Inputs */
+/* 4. Input fields */
 .calculator input {
   width: 100%;
-  height: 50px;
-  padding: 14px;
-  border: 2px solid #aab69d;
-  border-radius: 10px;
+  padding: 15px;
+  border: 1px solid #49415b;
+  border-radius: 12px;
   outline: none;
-  background: #c8d5b9;
-  color: #243421;
-  font-size: 17px;
-  font-weight: 600;
-  box-shadow: inset 0 3px 8px rgba(0,0,0,0.18);
+  background: #15121e;
+  color: white;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.calculator input:focus {
+  border-color: #a78bfa;
+  box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.15);
 }
 
 .calculator input::placeholder {
-  color: #65735c;
-  font-size: 13px;
+  color: #827b91;
 }
 
-/* Number Keypad */
-.number-grid {
+/* 5. Operation buttons */
+.calculator form > div {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  padding: 5px;
-  margin: 10px;
-}
-
-.number-grid button,
-.calculator form div button {
-  height: 55px;
-  border: 1px solid #626a77;
-  border-radius: 12px;
-  background: linear-gradient(145deg, #555e6c, #343b47);
-  color: #ffffff;
-  font-size: 22px;
-  font-weight: 600;
-  cursor: pointer;
-  box-shadow: 0 5px 0 #171b23;
-  transition: 0.15s ease;
-}
-
-.number-grid button:hover,
-.calculator form div button:hover {
-  background: linear-gradient(145deg, #687383, #444c59);
-}
-
-.number-grid button:active,
-.calculator form div button:active {
-  transform: translateY(4px);
-  box-shadow: 0 1px 0 #171b23;
-}
-
-/* Operation Buttons */
-.calculator form div {
-  display: flex;
   gap: 10px;
 }
 
-.calculator form div button {
-  flex: 1;
-  background: linear-gradient(145deg, #f3a14c, #dc762c);
-  border-color: #f5b36e;
-  color: white;
-}
-
-.calculator form div button:hover {
-  background: #ffad57;
-}
-
-/* Result Screen */
-.calculator h2 {
-  min-height: 58px;
-  padding: 17px;
-  border-radius: 10px;
-  background: #c8d5b9;
-  color: #263824;
-  text-align: right;
-  font-size: 20px;
-  border: 2px solid #aab69d;
-  box-shadow: inset 0 3px 8px rgba(0,0,0,0.18);
-}
-
-/* Error Message */
-.calculator p {
-  padding: 11px;
-  border-radius: 8px;
-  background: #512f35;
-  color: #ff9c9c;
-  font-size: 13px;
-  text-align: center;
-}
-
-/* Reset Button */
-.calculator form > button {
-  height: 48px;
+.calculator button {
   border: none;
-  border-radius: 11px;
-  background: linear-gradient(145deg, #ed6464, #c83e3e);
-  color: white;
-  font-size: 16px;
+  border-radius: 12px;
+  padding: 13px;
+  font-size: 19px;
   font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 4px 0 #8e2929;
+  transition: 0.2s ease;
+}
+
+.calculator form > div button {
+  background: #393149;
+  color: #ffffff;
+}
+
+.calculator form > div button:hover {
+  background: #514369;
+  transform: translateY(-2px);
+}
+
+/* Equals button */
+.calculator form > div button:nth-child(5) {
+  background: #a78bfa;
+  color: #171123;
+}
+
+/* Backspace button */
+.calculator form > div button:nth-child(6) {
+  background: #713f55;
+  color: #ffffff;
+}
+
+/* 6. Result */
+.calculator h2 {
+  padding: 15px;
+  border-radius: 12px;
+  background: #15121e;
+  border: 1px solid #393149;
+  color: #c4b5fd;
+  font-size: 20px;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+/* 7. Error message */
+.calculator form p {
+  color: #ff8585;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* 8. Reset button */
+.calculator form > button {
+  background: #e05c65;
+  color: white;
 }
 
 .calculator form > button:hover {
-  background: #fa7777;
+  background: #c94350;
 }
 
-.calculator form > button:active {
-  transform: translateY(3px);
-  box-shadow: 0 1px 0 #8e2929;
+/* 9. Number grid */
+.number-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 15px;
 }
 
-/* Mobile Responsive */
-@media (max-width: 400px) {
+.number-grid button {
+  min-height: 55px;
+  background: #393149;
+  color: white;
+  font-size: 21px;
+}
+
+.number-grid button:hover {
+  background: #a78bfa;
+  color: #171123;
+  transform: translateY(-3px);
+}
+
+.calculator button:active {
+  transform: scale(0.96);
+}
+
+.calculator button:focus-visible {
+  outline: 2px solid #c4b5fd;
+  outline-offset: 3px;
+}
+
+/* 10. Mobile responsive */
+@media (max-width: 480px) {
+  body {
+    padding: 15px;
+  }
+
   .calculator {
-    width: 100%;
-    padding: 22px;
+    padding: 20px;
+  }
+
+  .calculator h1 {
+    font-size: 23px;
   }
 }
-

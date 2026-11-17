@@ -1,137 +1,184 @@
+
 import { useState } from "react";
 import "./App.css";
 
-function App(){
+function App() {
 
-  const [num1, setNum1]= useState("");
-  const [num2, setNum2]= useState("");
-  const [error, setError]= useState();
-  const [dsplay, setDsplay]= useState('');
+  // 1. STATES
+  const [num1, setNum1] = useState("");
+  const [num2, setNum2] = useState("");
+  const [error, setError] = useState("");
+  const [dsplay, setDsplay] = useState("");
   const [operation, setOperation] = useState("");
   const [activeInput, setActiveInput] = useState("num1");
 
 
-  const Addition= () =>{
-    const result = Number(num1) + Number(num2)
+  // 2. CALCULATION FUNCTIONS
+
+  const Addition = () => {
+    const result = Number(num1) + Number(num2);
     setDsplay(result);
-  }
-   const Subtraction= () =>{
-    const result = Number(num1) - Number(num2)
+  };
+
+  const Subtraction = () => {
+    const result = Number(num1) - Number(num2);
     setDsplay(result);
-  }
-   const Multiplication= () =>{
-    const result = Number(num1) * Number(num2)
+  };
+
+  const Multiplication = () => {
+    const result = Number(num1) * Number(num2);
     setDsplay(result);
-  }
-   const Division= () =>{
-     if (Number(num2)===0){
-    setError("Division by Zero is not Allowed")
-     return;
-  }
-    setError("")
-    const result = Number(num1) / Number(num2)
+  };
+
+  const Division = () => {
+    if (Number(num2) === 0) {
+      setError("Division by Zero is not Allowed");
+      return;
+    }
+
+    const result = Number(num1) / Number(num2);
     setDsplay(result);
-   
+  };
+
+
+  // 3. MAIN CALCULATION FUNCTION
+
+  function Calculation() {
+    if (num1 === "" || num2 === "") {
+      setError("Please enter both numbers");
+      return;
+    }
+
+    setError("");
+
+    if (operation === "+") {
+      Addition();
+    } else if (operation === "-") {
+      Subtraction();
+    } else if (operation === "×") {
+      Multiplication();
+    } else if (operation === "÷") {
+      Division();
+    }
   }
 
- function Calculation(){
- if(operation==='+'){
-   Addition();
- }
- 
- else if (operation === "-") {
- Subtraction();
-}
 
- if(operation=== "×"){
-  Multiplication();
- }
+  // 4. DELETE FUNCTION
 
- else if(operation ==="÷"){
-  Division();
- }
-
+  function HandleDelete() {
+    if (activeInput === "num1") {
+      setNum1((prev) => prev.slice(0, -1));
+    } else {
+      setNum2((prev) => prev.slice(0, -1));
+    }
   }
-  function Handledelete(){
+
+
+  // 5. RESET FUNCTION
+
+  function HandleReset() {
     setNum1("");
-    setNum2("")
+    setNum2("");
+    setOperation("");
+    setDsplay("");
+    setError("");
+    setActiveInput("num1");
   }
 
 
-  function Handledelete(){
-    if(activeInput==='num1'){
-      setNum1((prev) =>prev.slice(0,-1))
-    }
-    else{
-      setNum2((prev) =>prev.slice(0,-1))
-    }
-  }
+  // 6. RETURN JSX
+
+  return (
+    <div className="calculator">
+
+      <h1>React Calculator</h1>
+
+      <form>
+
+        {/* First Number */}
+        <input
+          type="number"
+          value={num1}
+          onChange={(e) => setNum1(e.target.value)}
+          onFocus={() => setActiveInput("num1")}
+          placeholder="Enter first number"
+        />
+
+        {/* Second Number */}
+        <input
+          type="number"
+          value={num2}
+          onChange={(e) => setNum2(e.target.value)}
+          onFocus={() => setActiveInput("num2")}
+          placeholder="Enter second number"
+        />
+
+        {/* Operation Buttons */}
+        <div>
+          <button type="button" onClick={() => {
+            setOperation("+");
+            setActiveInput("num2");
+          }}>+</button>
+
+          <button type="button" onClick={() => {
+            setOperation("-");
+            setActiveInput("num2");
+          }}>-</button>
+
+          <button type="button" onClick={() => {
+            setOperation("×");
+            setActiveInput("num2");
+          }}>×</button>
+
+          <button type="button" onClick={() => {
+            setOperation("÷");
+            setActiveInput("num2");
+          }}>÷</button>
+
+          <button type="button" onClick={Calculation}>=</button>
+
+          <button type="button" onClick={HandleDelete}>
+            ⌫
+          </button>
+        </div>
+
+        {/* Result */}
+        <h2>Result: {dsplay}</h2>
+
+        {/* Error */}
+        {error && <p>{error}</p>}
+
+        {/* Reset */}
+        <button type="button" onClick={HandleReset}>
+          Reset
+        </button>
+
+      </form>
 
 
-  return(
-  <div className="calculator">
-    <h1>React Calculator</h1>
+      {/* Number Buttons */}
+      <div className="number-grid">
 
-    <form>
-      {/* First Number */}
-      <input
-        type="number"
-        value={num1}
-        onChange={(e) => setNum1(e.target.value)}
-        placeholder="Enter first number"
-        onFocus={() => setActiveInput("num1")}
-      />
+        {[7, 8, 9, 4, 5, 6, 1, 2, 3, 0].map((number) => (
+          <button
+            key={number}
+            type="button"
+            onClick={() => {
+              if (activeInput === "num1") {
+                setNum1((prev) => prev + String(number));
+              } else {
+                setNum2((prev) => prev + String(number));
+              }
+            }}
+          >
+            {number}
+          </button>
+        ))}
 
-      {/* Second Number */}
-      <input
-        type="number"
-        value={num2}
-        onChange={(e) => setNum2(e.target.value)}
-        placeholder="Enter second number"
-        onFocus={() => setActiveInput("num2")}
-      />
-
-      {/* Calculation Buttons */}
-      <div>
-        <button type="button" onClick={() => setOperation("+")}>+</button>
-        <button type="button" onClick={() => setOperation("-")}>-</button>
-        <button type="button" onClick={()=> setOperation("×")}>×</button>
-        <button type="button" onClick={()=> setOperation("÷")}>÷</button>
-        <button type="button" onClick={Calculation}>=</button>
-         <button type="button" onClick={Handledelete}>
-             ⌫
-      </button>
       </div>
 
-      {/* Result */}
-      <h2>Result: {dsplay}</h2>
-
-      {/* Error Message */}
-      {error && <p>{error}</p>}
-
-      <button onSubmit={Handledelete}>Reset</button>
-    </form>
-
-    <div className="number-grid">
-  {[7, 8, 9, 4, 5, 6, 1, 2, 3, 0].map((number) => (
-    <button
-    key={number}
-    type="button"
-    onClick={()=>{
-    if(activeInput==="num1"){
-      setNum1((prev)=> prev+String(number))
-    }else{
-      setNum2((prev) =>prev+String(number))
-    }
-
-    }}
-    >
-      {number}
-    </button>
-  ))}
-</div>
-  </div>
-  )
+    </div>
+  );
 }
 
 export default App;
